@@ -1,34 +1,12 @@
-# GeoPath AI — Adaptive Geometry Studio
+# GeoPath AI — Live Gemini edition
 
-A responsive, three-level Pythagorean-theorem learning app for the **Web-Based AI Math Differentiator** assignment.
+This website has three difficulty levels, verified geometry exercises, hints, worked solutions and an actual Gemini-powered AI coach.
 
-## Features
-- Foundation: direct Pythagorean calculation with a guided hint.
-- Standard: real-world perpendicular-path model.
-- Advanced: rectangular garden diagonal plus material-feasibility reasoning.
-- Instant numerical feedback, hints, verified worked solutions, rotating problem parameters, responsive SVG diagram.
-- Optional **live Gemini AI coach** via Netlify serverless function; the API key remains server-side.
-- Clearly labeled deterministic local fallback if the AI endpoint is unavailable.
+## Installation
+1. Upload the **contents** of this folder to the ROOT of your GitHub repository. Preserve `netlify/functions/coach.js`.
+2. Netlify must be linked to that GitHub repository. Check the latest deployment says **Published**.
+3. In Netlify → Environment variables, add `GEMINI_API_KEY` with the secret Google AI Studio API key. Set for all contexts.
+4. Trigger a fresh deploy in Netlify after changing the key.
+5. Open the site and ask a question. A successful reply is labeled `LIVE GEMINI AI`.
 
-## Run locally
-Open `index.html` in any browser. Core exercises, hints, solutions, and checks work offline. The AI coach will use the explicitly labeled local fallback.
-
-## Deploy with live AI
-1. Create a **public GitHub repository** and upload all files, keeping the `netlify/functions` directory structure.
-2. In Netlify, choose **Add new project → Import an existing project → GitHub** and select the repository.
-3. Set publish directory to `.`; deploy.
-4. In Netlify site configuration, add environment variable `GEMINI_API_KEY` with your own Google AI Studio key. **Never commit the key to GitHub or put it in HTML.**
-5. Trigger a new deploy, then test **Ask coach** and the three levels.
-6. Submit the Netlify live URL, the public repository URL, and the one-page report.
-
-**Note:** Gemini model names and free-tier availability can change. If the model returns an error, update the model name in `netlify/functions/coach.js` to one currently available for your key, redeploy, and retest.
-
-## Test checklist
-- All three difficulty tabs update objective, context, and diagram.
-- Check a correct and incorrect answer on each level.
-- Verify the hint does not reveal the entire answer and the solution is mathematically correct.
-- Advanced tasks correctly compare required length to available material.
-- Check mobile layout and live AI endpoint after deployment.
-
-## Educational approach
-One shared goal—apply the Pythagorean theorem to reason about right triangles—while scaffolding, cognitive demand, and contextual interpretation vary by readiness level. The teacher remains responsible for validating all model-generated explanations.
+If Gemini is unavailable, the site displays the actual error instead of calling a fixed template an AI response. A valid key, accessible model and remaining quota are essential; these cannot be guaranteed by website code. Do not put your API key in GitHub or in HTML.
